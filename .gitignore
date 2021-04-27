@@ -2,3 +2,7 @@ venv
 .idea
 __pycache__
 blog/blog-env
+[analisis].ipynb
+input.json
+output.json
+.git
