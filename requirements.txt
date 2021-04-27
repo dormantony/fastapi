@@ -11,5 +11,12 @@ typing-extensions==3.7.4.3
 uvicorn==0.13.4
 watchgod==0.7
 websockets==8.1
-uvloop
 httptools
+google-cloud-storage
+google-api-python-client
+PyMySQL==0.9.3
+google-auth
+uvloop
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
