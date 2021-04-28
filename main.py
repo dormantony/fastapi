@@ -1,35 +1,28 @@
+from builtins import list
 from typing import Optional
 import os, json
 import uvicorn as uvicorn
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, Depends, status, Response
 from google.oauth2 import service_account
 from google.cloud import storage
 from googleapiclient.discovery import build
 import pymysql
 from pymysql.err import OperationalError
 from pymysql.constants import CLIENT
-from . import schemas, models
-from database import engine
+from sqlalchemy.orm import Session
+
+import models
+import schemas
+from schemas import Blog, Spreadsheet
+from database import engine, SessionLocal
 
 # models.Base.metadata.create_all(engine)
 
-CONFIG_BUCKET=None
-SQL_CONFIG=None
+CONFIG_BUCKET = None
+SQL_CONFIG = None
 mysql_conn = None
 
-class Blog(BaseModel):
-    title: str
-    body: str
-    published: bool
-
-
-class Spreadsheet(BaseModel):
-    spreadsheet_id_input: str
-    range_input: str
-
-
-app = FastAPI(title='Apis Demo',description='apis de prueba de uso de spreadsheets con FastApi')
+app = FastAPI(title='Apis Demo', description='apis de prueba de uso de spreadsheets con FastApi')
 
 
 @app.get('/blog')
@@ -136,6 +129,7 @@ def getConfigBD():
     SQL_CONFIG = format_connection(contents)
     return SQL_CONFIG
 
+
 def getConfigBDDos():
     config_file_name = 'config-sql.txt'
     if os.environ.get('LOCAL'):
@@ -175,7 +169,6 @@ def format_connection_dos(contents):
     return SQL_CONFIG
 
 
-
 def format_connection(contents):
     if not os.environ.get('LOCAL'):
         SQL_CONNECTION_NAME = contents[1].decode("utf-8")
@@ -205,16 +198,15 @@ def format_connection(contents):
         }
     return SQL_CONFIG
 
-@app.on_event("startup")
-async def startup():
-    print('creating instance of buckets')
-    if os.environ.get('LOCAL'):
-        CONFIG_BUCKET = None
-    else:
-        CONFIG_BUCKET = getObjBucket()
-    SQL_CONFIG = getConfigBD()
 
-
+# @app.on_event("startup")
+# async def startup():
+print('creating instance of buckets')
+if os.environ.get('LOCAL'):
+    CONFIG_BUCKET = None
+else:
+    CONFIG_BUCKET = getObjBucket()
+SQL_CONFIG = getConfigBD()
 
 
 def __get_cursor():
@@ -231,7 +223,6 @@ def __get_cursor():
 
 
 # ==============================================================
-
 
 
 @app.post('/escritura_almacen')
@@ -259,7 +250,7 @@ def crear_almacen(almacen: Spreadsheet):
         for row in response['values']:
             val.append(f"(\'{row[0]}\', \'{row[1]}\', \'{row[2]}\', \'{row[3]}\')")
 
-        insert=sql+','.join(val)
+        insert = sql + ','.join(val)
         cursor.execute(insert)
     return {'data': 'almacen creado'}
 
@@ -277,6 +268,75 @@ def lectura_almacen():
         for row in cursor.fetchall():
             rows.append(row)
     return {'data': rows}
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+@app.post('/inventarios_crear', status_code=status.HTTP_201_CREATED)
+def write_inventario(request: schemas.Inventario, db: Session = Depends(get_db)):
+    try:
+
+        new_inventario = models.Inventario(inventario_nombre=request.inventario_nombre,
+                                           inventario_telefono=request.inventario_telefono,
+                                           inventario_correo=request.inventario_correo,
+                                           inventario_direccion=request.inventario_direccion)
+        db.add(new_inventario)
+        db.commit()
+        db.refresh(new_inventario)
+    except Exception as e:
+        print(e)
+
+    return new_inventario
+
+
+@app.post('/inventarios_crear_ss', status_code=status.HTTP_201_CREATED)
+def write_inventario_ss(request: schemas.Spreadsheet, db: Session = Depends(get_db)):
+    try:
+        spreadsheet_id_input = request.spreadsheet_id_input
+        range_input = request.range_input
+        if os.environ.get('LOCAL'):
+            credentials = getLocalCredentialsByName('arete-almacenes-spreadsheets.json')
+        else:
+            credentials = getCredentialsSheets()
+        service = build('sheets', 'v4', credentials=credentials)
+        response = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id_input, range=range_input).execute()
+        print(response['values'])
+        for row in response['values']:
+            new_inventario = models.Inventario(inventario_nombre=row[0], inventario_telefono=row[1],
+                                               inventario_correo=row[2], inventario_direccion=row[3])
+
+            _query = db.query(models.Inventario).filter(models.Inventario.inventario_nombre == row[0],
+                                                        models.Inventario.inventario_telefono == row[1],
+                                                        models.Inventario.inventario_correo == row[2],
+                                                        models.Inventario.inventario_direccion == row[3], ).first()
+            if not _query:
+                db.add(new_inventario)
+
+        db.commit()
+    except Exception as e:
+        print(e)
+
+    return {'data': 'almacen creado'}
+
+
+@app.get('/inventarios_leer', status_code=status.HTTP_200_OK)
+def read_inventario(db: Session = Depends(get_db)):
+    lisInventario = db.query(models.Inventario).all()
+    return lisInventario
+
+
+@app.get('/inventarios_leer/{id}', status_code=status.HTTP_200_OK)
+def read_by_id(id, response: Response, db: Session = Depends(get_db)):
+    inventario = db.query(models.Inventario).filter(models.Inventario.inventario_id == id).first()
+    if not inventario:
+        response.status_code = status.HTTP_404_NOT_FOUND
+    return inventario
 
 
 if __name__ == "__main__":
