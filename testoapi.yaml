@@ -1,0 +1,911 @@
+openapi: 3.0.1
+info:
+  version: '2020-03-26T13:25:47Z'
+  title: Mobility 4.5
+servers:
+  - url: 'https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/'
+    description: Dev server
+tags:
+  - name: Mobility
+    description: APIS Mobility
+paths:
+  /mobility_ask_code:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_ask_code
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_ask_code
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/mobility_ask_code'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_register:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_register
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_register
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_register'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_login:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_login
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_login
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_login'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_special_functions:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_special_functions
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_special_functions
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_special_functions'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_get_lat_long:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_get_lat_long
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_get_lat_long
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_get_lat_long'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_get_trip:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_get_trip
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_get_trip
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_get_trip'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_take_trip:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_take_trip
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_take_trip
+      requestBody:
+        description: Parámetros requeridos para el API
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/mobility_take_trip'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_send_text_message:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: "mobility_send_text_message"
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_send_text_message
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_send_text_message'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_use_trip:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_use_trip
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_use_trip
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_use_trip'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_create_route:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_create_route
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_create_route
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_create_route'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_send_mail_message:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_send_mail_message
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_send_mail_message
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_send_mail_message'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+  /mobility_create_itinerary:
+    post:
+      tags:
+        - Mobility
+      summary: '[descripción]'
+      operationId: mobility_create_itinerary
+      x-google-backend:
+        address: https://us-central1-arete-arms5-mobility5-dev.cloudfunctions.net/mobility_create_itinerary
+      requestBody:
+          description: Parámetros requeridos para el API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mobility_create_itinerary'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '400':
+          description: 400 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+        default:
+          description: Unexpected error
+components:
+  schemas:
+    response:
+      type: string
+    user_mail:
+      type: object
+      required:
+        - user_mail
+      properties:
+        user_mail:
+          type: string
+      xml:
+        name: user_mail
+      example: alcyonedevelopers@gmail.com
+    user_mobile:
+      type: object
+      required:
+        - user_mobile
+      properties:
+        user_mobile:
+          type: string
+      xml:
+        name: user_mobile
+      example: '887766554433'
+    user_name:
+      type: object
+      required:
+        - user_name
+      properties:
+        user_name:
+          type: string
+      xml:
+        name: user_name
+      example: ALCYONE
+    user_company:
+      type: object
+      required:
+        - user_company
+      properties:
+        user_company:
+          type: string
+      xml:
+        name: user_company
+      example: ALCYONE
+    user_warehouse:
+      type: object
+      required:
+        - user_warehouse
+      properties:
+        user_company:
+          type: string
+      xml:
+        name: user_warehouse
+      example: ALCYONE
+    mobility_ask_code:
+      type: object
+      required:
+        - user_mail
+        - user_mobile
+        - user_name
+        - user_company
+        - user_birthdate
+        - user_transport_company
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_mobile:
+          $ref: '#/components/schemas/user_mobile'
+        user_name:
+          $ref: '#/components/schemas/user_name'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        user_birthdate:
+          type: string
+        user_transport_company:
+          type: string
+      example:
+        user_mail: emacedo@arete.ws
+        user_mobile: '5514742041'
+        user_name: Emmanuel Graciano
+        user_company: ARETE
+        user_birthdate: '1983-11-15'
+        user_transport_company: Fletera ARETE
+    mobility_register:
+      type: object
+      required:
+        - user_mail
+        - user_mobile
+        - user_company
+        - user_key_to_access_first_time
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_mobile:
+          $ref: '#/components/schemas/user_mobile'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        user_key_to_access_first_time:
+          type: string
+      example:
+        user_mail: emacedo@arete.ws
+        user_mobile: '5514742041'
+        user_company: ARETE
+        user_key_to_access_first_time: TestMobility
+    mobility_login:
+      type: object
+      required:
+        - user_mail
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+      example:
+        user_mail: emacedo@arete.ws
+    mobility_special_functions:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - company_access_code_special_functions
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        company_access_code_special_functions:
+          type: string
+      example:
+        user_mail: emacedo@arete.ws
+        user_company: ARETE
+        company_access_code_special_functions: ARETE2020
+    mobility_get_lat_long:
+      type: object
+      required:
+        - array_address
+      properties:
+        array_address:
+          type: string
+      example:
+        array_address:
+          - 'Av. Universidad No. 1002, Sta Cruz Atoyac, Benito Juárez, 03100 Ciudad de México, CDMX'
+    mobility_get_trip:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - trip_token
+        - user_warehouse
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        trip_token:
+          type: string
+        user_warehouse:
+          $ref: '#/components/schemas/user_warehouse'
+      example:
+        user_mail: gsoria@arete.ws
+        user_company: SILODISA
+        trip_token: '851526'
+        user_warehouse: 'ALCYONE-W'
+    mobility_take_trip:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - trip_token
+        - user_warehouse
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        trip_token:
+          type: string
+        user_warehouse:
+          $ref: '#/components/schemas/user_warehouse'
+      example:
+        user_mail: gsoria@arete.ws
+        user_company: SILODISA
+        trip_token: '851526'
+        user_warehouse: 'ALCYONE-W'
+    mobility_send_text_message:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - message_receiver_phone
+        - message_receiver_name
+        - message_body
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        message_receiver_phone:
+          type: string
+        message_receiver_name:
+          type: string
+        message_body:
+          type: string
+      example:
+        user_mail: emacedo@arete.ws
+        user_company: ARETE
+        message_receiver_phone: '5514742041'
+        message_receiver_name: Emmanuel
+        message_body: Hola prueba desde swagger
+    mobility_send_mail_message:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - message_receiver_mail
+        - message_receiver_name
+        - message_subject
+        - message_body
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        message_receiver_mail:
+          type: string
+        message_receiver_name:
+          type: string
+        message_subject:
+          type: string
+        message_body:
+          type: string
+      example:
+        user_mail: gsoria@arete.ws
+        user_company: SILODISA
+        message_receiver_mail: emacedo@arete.ws
+        message_receiver_name: Emmanuel Graciano
+        message_subject: Próxima entrega por aterrizar
+        message_body: 'Tu pedido está por llegar, por favor prepárate para recbirlo.'
+    mobility_use_trip:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - message_receiver_phone
+        - message_receiver_name
+        - message_body
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        warehouse_name:
+          type: string
+        trip_id:
+          type: integer
+      example:
+        user_mail: gsoria@arete.ws
+        user_company: SILODISA
+        warehouse_name: SILODISA
+        trip_id: 194851
+    mobility_create_route:
+      type: object
+      required:
+        - UUID
+        - user_mail
+        - user_company
+        - destinations
+        - warehouse
+        - vehicles
+      properties:
+        UUID:
+          type: integer
+          example: 111211
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        destinations:
+          type: array
+          items:
+            type: object
+            properties:
+              visit_destination_name:
+                type: string
+                example: AUTOZONE MORELOS
+              visit_destination_start_service_date:
+                type: string
+                example: '2020-03-01 08:00'
+              visit_destination_end_service_date:
+                type: string
+                example: '2020-03-13 22:00'
+              visit_destination_latitud:
+                type: number
+                example: 26.080159
+              visit_destination_longitud:
+                type: number
+                example: -98.304356
+              visit_destination_service_duration:
+                type: integer
+                example: 10
+              visit_destination_deliveries_tot_volume:
+                type: number
+                example: 1.6
+              visit_destination_deliveries_tot_weight:
+                type: number
+                example: 53.42
+              visit_destination_deliveries_tot_cost_goods:
+                type: integer
+                example: 100
+        warehouse:
+          type: object
+          properties:
+            trip_warehouse_takeoff_name:
+              type: string
+              example: CENADI
+            trip_warehouse_takeoff_latitud:
+              type: number
+              example: 19.474749
+            trip_warehouse_takeoff_longitud:
+              type: number
+              example: -99.22576
+            trip_warehouse_landing_name:
+              type: string
+              example: CENADI
+            trip_warehouse_landing_latitud:
+              type: number
+              example: 19.474749
+            trip_warehouse_landing_longitud:
+              type: number
+              example: -99.22576
+        vehicles:
+          type: object
+          properties:
+            trip_vehicle_type:
+              type: string
+              example: FORZA F250cc
+            trip_max_volume_vehicle:
+              type: number
+              example: 14.97
+            trip_max_weight_vehicle:
+              type: number
+              example: 2000
+      example:
+        UUID: 111211
+        user_mail: aaa@arete.ws
+        user_company: ALCYONE
+        destinations:
+          - visit_destination_name: AUTOZONE MORELOS
+            visit_destination_start_service_date: '2020-03-01 08:00'
+            visit_destination_end_service_date: '2020-03-13 22:00'
+            visit_destination_latitud: 26.080159
+            visit_destination_longitud: -98.304356
+            visit_destination_service_duration: 10
+            visit_destination_deliveries_tot_volume: 1.6
+            visit_destination_deliveries_tot_weight: 53.42
+            visit_destination_deliveries_tot_cost_goods: 100
+          - visit_destination_name: AUTOZONE RASTRO
+            visit_destination_start_service_date: '2020-03-01 08:00'
+            visit_destination_end_service_date: '2020-03-13 22:00'
+            visit_destination_latitud: 31.719817
+            visit_destination_longitud: -106.473815
+            visit_destination_service_duration: 10
+            visit_destination_deliveries_tot_volume: 2.41
+            visit_destination_deliveries_tot_weight: 53.42
+            visit_destination_deliveries_tot_cost_goods: 3
+          - visit_destination_name: AUTOZONE FIDICOMISO
+            visit_destination_start_service_date: '2020-03-01 08:00'
+            visit_destination_end_service_date: '2020-03-13 22:00'
+            visit_destination_latitud: 31.646149
+            visit_destination_longitud: -106.383772
+            visit_destination_service_duration: 10
+            visit_destination_deliveries_tot_volume: 0.83
+            visit_destination_deliveries_tot_weight: 165.02
+            visit_destination_deliveries_tot_cost_goods: 2
+        warehouse:
+          trip_warehouse_takeoff_name: CENADI
+          trip_warehouse_takeoff_latitud: 19.474749
+          trip_warehouse_takeoff_longitud: -99.22576
+          trip_warehouse_landing_name: CENADI
+          trip_warehouse_landing_latitud: 19.474749
+          trip_warehouse_landing_longitud: -99.22576
+        vehicles:
+          - trip_vehicle_type: FORZA F250cc
+            trip_max_volume_vehicle: 14.97
+            trip_max_weight_vehicle: 2000
+    mobility_create_itinerary:
+      type: object
+      required:
+        - user_mail
+        - user_company
+        - visit
+        - warehouse_start
+        - warehouse_end
+        - preferences
+      properties:
+        user_mail:
+          $ref: '#/components/schemas/user_mail'
+        user_company:
+          $ref: '#/components/schemas/user_company'
+        visit:
+          type: array
+          items:
+            type: object
+            properties:
+              visit_origin_name:
+                type: string
+                example: AUTOZONE MORELOS
+              visit_destination_start_service_time:
+                type: string
+                example: 01/03/20
+              visit_destination_end_service_time:
+                type: string
+                example: 13/03/20
+              visit_destination_service_duration:
+                type: number
+                example: 26
+              visit_destination_latitud:
+                type: number
+                example: 19.647616
+              visit_destination_longitud:
+                type: integer
+                example: -99.214365
+        warehouse_start:
+          type: object
+          properties:
+            warehouse_name:
+              type: string
+              example: CENADI
+            warehouse_latitud:
+              type: number
+              example: 19.474749
+            warehouse_longitud:
+              type: number
+              example: -99.22576
+        warehouse_end:
+          type: object
+          properties:
+            alias:
+              type: string
+              example: CENADI
+            warehouse_name:
+              type: string
+              example: CENADI
+            warehouse_latitud:
+              type: number
+              example: 19.474749
+            warehouse_longitud:
+              type: number
+              example: -99.22576
+        preferences:
+          type: object
+          properties:
+            maximum-journey-time:
+              type: integer
+              example: 240
+      example:
+        user_mail: alcyonedevelopers@gmail.com
+        user_company: ALCYONE
+        visit:
+          - visit_origin_name: uno
+            visit_destination_start_service_time: '8:00'
+            visit_destination_end_service_time: '20:00'
+            visit_destination_service_duration: 20
+            visit_destination_latitud: 19.647616
+            visit_destination_longitud: -99.214365
+          - visit_origin_name: dos
+            visit_destination_start_service_time: '9:00'
+            visit_destination_end_service_time: '20:00'
+            visit_destination_service_duration: 20
+            visit_destination_latitud: 19.633455
+            visit_destination_longitud: -99.199681
+        warehouse_start:
+          warehouse_name: silodisa
+          warehouse_latitud: 19.583596
+          warehouse_longitud: -99.215455
+        warehouse_end:
+          alias: ''
+          warehouse_name: silodisa
+          warehouse_latitud: 19.583596
+          warehouse_longitud: -99.215455
+        preferences:
+          maximum-journey-time: 240
