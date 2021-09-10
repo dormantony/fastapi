@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 SQLALCHEMY_DATABASE_URL = \
     'mysql+pymysql://{user}:{passw}@{host}/{db}'. \
-        format(user='arete-almacen', passw='*DhONCqxRn', host='35.238.144.25', db='armsv45')
+        format(user='arete-almacen', passw='', host='', db='')
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
      #, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
